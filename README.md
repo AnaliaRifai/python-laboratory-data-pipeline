@@ -20,9 +20,18 @@
 
 ## 🎯 Objetivo del proyecto
 
-Desarrollar un pipeline en Python para normalizar, validar y consolidar informes históricos de laboratorio almacenados en archivos Excel con estructuras variables.
+El objetivo general del proyecto es construir una base histórica confiable de resultados de laboratorio que permita consultar y analizar información acumulada durante varios años.
 
-El objetivo fue transformar múltiples archivos anuales, correspondientes al período 2018–2026, en una única base histórica estandarizada, limpia y lista para análisis.
+Originalmente, los informes se encontraban distribuidos en múltiples archivos Excel con estructuras variables, lo que dificultaba responder preguntas simples como:
+
+- ¿Qué muestras se analizaron en determinado año?
+- ¿Qué resultados tuvo un productor específico?
+- ¿Qué cultivos o alimentos fueron analizados con mayor frecuencia?
+- ¿Cómo consultar rápidamente resultados históricos sin revisar archivo por archivo?
+
+Este repositorio documenta la **primera etapa del proyecto**: el desarrollo de un pipeline en Python para normalizar, validar y consolidar los informes históricos del período 2018–2026.
+
+El resultado de esta etapa es una base histórica limpia y estandarizada, que funciona como insumo para una etapa posterior de análisis, consulta y visualización.
 
 ---
 
@@ -44,6 +53,27 @@ Entre los principales problemas detectados se encontraban:
 - Errores de escritura y abreviaturas históricas.
 
 Por este motivo, se decidió utilizar Python como herramienta principal para construir una etapa de normalización previa al análisis.
+
+---
+
+## 🧭 Alcance de esta etapa
+
+Este repositorio corresponde a la etapa de preparación y consolidación de datos.
+
+El foco de esta etapa fue resolver el problema de base: transformar archivos históricos dispersos y heterogéneos en una estructura única, confiable y reutilizable.
+
+Incluye:
+
+- lectura automática de informes históricos;
+- normalización de estructuras diferentes;
+- estandarización de nombres de variables;
+- tratamiento de errores, valores faltantes y excepciones;
+- validación anual de los datos;
+- consolidación final del período 2018–2026;
+- generación de logs de control.
+
+No incluye todavía la etapa completa de visualización o dashboard.  
+Esa etapa se desarrollará a partir de la base histórica generada por este pipeline.
 
 ---
 
@@ -77,7 +107,7 @@ python-laboratory-data-pipeline/
 
 ---
 
-## 🔄 Flujo general del proyecto
+## 🔄 Flujo general de esta etapa
 
 ```text
 Archivos Excel originales
@@ -88,14 +118,16 @@ Consolidado anual validado
         ↓
 Script maestro histórico
         ↓
-Base consolidada 2018–2026
+Base histórica 2018–2026
         ↓
-Log de control y validación
+Dataset preparado para consulta y análisis
 ```
 
 Los archivos originales se conservaron sin modificaciones.
 
 Todas las reglas de limpieza, corrección y exclusión quedaron documentadas dentro del pipeline.
+
+La base resultante será utilizada en una etapa posterior para construir una herramienta de consulta y visualización que permita explorar la información histórica de forma más rápida y accesible.
 
 ---
 
@@ -360,13 +392,22 @@ scripts/pipeline_maestro_consolidado_historico_2018_2026.py
 
 ## 📌 Estado del proyecto
 
-Etapa finalizada:
+Estado actual: **Etapa 1 finalizada**.
 
-- Normalización de archivos históricos.
-- Validación anual 2018–2026.
-- Consolidación histórica final.
-- Generación de logs de control.
-- Base lista para análisis posterior.
+Esta etapa incluyó:
+
+- normalización de archivos históricos;
+- validación anual del período 2018–2026;
+- consolidación histórica final;
+- generación de logs de control;
+- construcción de una base limpia y reutilizable.
+
+Próxima etapa:
+
+- diseño de una herramienta de consulta y visualización;
+- creación de métricas e indicadores;
+- desarrollo de filtros por año, productor, cultivo y muestra;
+- análisis exploratorio de la información histórica.
 
 ---
 
@@ -387,10 +428,3 @@ Los principales aprendizajes fueron:
 
 ---
 
-## 👩‍💻 Autora
-
-**Analía Rifai**
-
-Ingeniera Agrónoma en transición hacia Data Analytics.
-
-Este proyecto forma parte de mi portfolio profesional como Data Analyst, con foco en procesos ETL, limpieza de datos y construcción de bases confiables para análisis.
